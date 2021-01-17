@@ -23,7 +23,6 @@ int main() {
    SDL_Event event;
 
    while ( !quit ) {
-      eventCollector->clearEvents();
       // Hanle every event on the queue
       while( SDL_PollEvent( &event ) != 0 ) {
          // Handle quit request

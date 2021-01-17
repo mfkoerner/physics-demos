@@ -19,7 +19,6 @@ private:
 
 public:
    EventCollector();
-   void clearEvents();
    void addIfImportant( SDL_Event event );
 
    // getters
