@@ -26,7 +26,7 @@ Character::Character( SDL_Renderer *renderer_,
 }
 
 void
-Character::update() {
+Character::update( EventCollector *collector ) {
    // get time info from caller (possibly as argument)
    // get inputs from mouse
    // update position based on velocity and boundary conditions

@@ -5,6 +5,7 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
+#include "EventCollector.hpp"
 #include "SDL.h"
 
 namespace PhysicsGame {
@@ -44,7 +45,7 @@ public:
               int sWidth, int sHeight );
 
    // Main functionality
-   void update();
+   void update( EventCollector *collector );
    void draw();
 
    // Helpers
