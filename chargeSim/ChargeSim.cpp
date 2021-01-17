@@ -17,15 +17,8 @@
 int main() {
    PhysicsGame::Screen *gs = new PhysicsGame::Screen( SCREEN_WIDTH, SCREEN_HEIGHT );
 
-   gs->draw( 300, 100 );
-   SDL_Delay( 2000 );
-   gs->draw( 250, 0 );
-   SDL_Delay( 2000 );
-   gs->draw( 0, 300 );
-   SDL_Delay( 2000 );
-   while( 1 ) {
-      if ( gs->shouldQuit() ) break;
-      gs->draw( 50, 100 );
+   while( !gs->shouldQuit() ) {
+      gs->drawDot();
    }
 
    delete gs;
