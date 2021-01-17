@@ -14,7 +14,7 @@
 #define SCREEN_HEIGHT 480
 
 int main() {
-   GameScreen::Screen *gs = new GameScreen::Screen( SCREEN_WIDTH, SCREEN_HEIGHT );
+   PhysicsGame::Screen *gs = new PhysicsGame::Screen( SCREEN_WIDTH, SCREEN_HEIGHT );
 
    gs->draw( 300, 100 );
    SDL_Delay( 2000 );

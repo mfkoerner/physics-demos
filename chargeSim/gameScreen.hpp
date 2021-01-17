@@ -2,7 +2,7 @@
 // Email:   mfkoerner@gmail.com
 #include "SDL.h"
 
-namespace GameScreen {
+namespace PhysicsGame {
 
 class Screen {
 private:
@@ -23,4 +23,4 @@ public:
    bool shouldQuit();
 }; // class Screen
 
-} // namespace GameScreen
+} // namespace PhysicsGame

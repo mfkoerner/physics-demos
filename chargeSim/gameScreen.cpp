@@ -2,7 +2,7 @@
 // Email:   mfkoerner@gmail.com
 #include "gameScreen.hpp"
 
-namespace GameScreen {
+namespace PhysicsGame {
 
 Screen::Screen( int width, int height ) {
    sWidth = width;
@@ -42,4 +42,4 @@ Screen::shouldQuit() {
    return SDL_PollEvent( &event ) && event.type == SDL_QUIT;
 }
 
-} // namespace GameScreen
+} // namespace PhysicsGame
