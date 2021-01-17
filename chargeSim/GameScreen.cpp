@@ -58,10 +58,10 @@ Screen::draw( int xmin, int ymin ) {
 
 void
 Screen::update( EventCollector *collector ) {
-   // get time
-   // get inputs (maybe, this could be done in character)
    // update state of character
-   // call draw
+   character->update( collector );
+   // draw our new stuff
+   draw();
 }
 
 } // namespace PhysicsGame
