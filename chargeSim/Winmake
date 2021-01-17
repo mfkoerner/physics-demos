@@ -1,0 +1,32 @@
+# Compile for windows
+CC='g++.exe'
+
+# compiler flags
+# -g                 adds debugging information to excecutable file
+# -Wall              turns on most, but not all, compiler warnings
+# -static-libgcc     statically links gcc for windows executable
+# -static-libstdc++  statically links c++ for windows executable
+# I wonder if the below will ever be neded again
+#WINFLAGS = -static-libgcc -static-libstdc++
+CFLAGS = -g -Wl,-subsystem,windows -static-libgcc -static-libstdc++
+
+# LINKER_FLAGS specifies libraries we're linking against
+LINKER_DIR = -LSDL2/x86_64-w64-mingw32/lib
+LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2
+
+# build target executable:
+TARGET = chargeSim
+INCLUDE = -I SDL2/x86_64-w64-mingw32/include/SDL2
+
+all: $(TARGET)
+
+gameScreen.o: gameScreen.cpp gameScreen.hpp
+	$(CC) $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
+
+$(TARGET): $(TARGET).cpp gameScreen.o
+	# $^ MUST come before LINKER* because SDL checks for existance of main()
+	$(CC) $^ $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -o $(@).exe
+
+clean:
+	$(RM) $(TARGET).exe
+	$(RM) *.o
