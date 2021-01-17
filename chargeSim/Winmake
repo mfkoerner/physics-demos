@@ -26,8 +26,11 @@ GameScreen.o: GameScreen.cpp GameScreen.hpp
 Character.o: Character.cpp Character.hpp
 	$(CC) $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
 
+EventCollector.o: EventCollector.cpp EventCollector.hpp
+	$(CC) $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
+
 # $^ MUST come before LINKER* because SDL checks for existance of main()
-$(TARGET): $(TARGET).cpp GameScreen.o Character.o
+$(TARGET): $(TARGET).cpp GameScreen.o Character.o EventCollector.o
 	$(CC) $^ $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -o $(@).exe
 
 clean:

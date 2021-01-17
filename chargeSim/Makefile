@@ -15,8 +15,6 @@ INCLUDE = -I /usr/include/SDL2
 
 all: $(TARGET)
 
-ChargeSim: ChargeSim.cpp GameScreen.o
-
 GameScreen.o: GameScreen.cpp GameScreen.hpp
 	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
 	cp $^ win/
@@ -25,7 +23,11 @@ Character.o: Character.cpp Character.hpp
 	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
 	cp $^ win/
 
-$(TARGET): $(TARGET).cpp GameScreen.o Character.o
+EventCollector.o: EventCollector.cpp EventCollector.hpp
+	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
+	cp $^ win/
+
+$(TARGET): $(TARGET).cpp GameScreen.o Character.o EventCollector.o
 	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -o $@ $^
 	cp $< win/
 	cp Winmake win/Makefile
