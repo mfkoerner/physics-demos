@@ -15,6 +15,7 @@ private:
    // radius of circle and acceleration magnitude
    float radius = 0;
    float acceleration = 0;
+   float diagAccel = 0;
 
    // position, velocity, acceleration
    float xPos = 0;
@@ -23,6 +24,9 @@ private:
    float yVel = 0;
    float xAcc = 0;
    float yAcc = 0;
+
+   // time in milliseconds since SDL initialized
+   Uint32 sdlTime = 0;
 
    // map boundaries
    float xMinPos = 0;

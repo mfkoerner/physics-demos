@@ -7,12 +7,15 @@
 
 namespace PhysicsGame {
 
+float ONE_OVER_SQRT2 = 0.70710678118;
+
 Character::Character( float radius_, float acceleration_,
                       float xPosInitial, float yPosInitial,
                       float fWidth, float fHeight,
                       int sWidth, int sHeight ) {
    radius = radius_;
    acceleration = acceleration_;
+   diagAccel = acceleration * ONE_OVER_SQRT2;
    xPos = xPosInitial;
    yPos = yPosInitial;
    xMinPos = -0.5 * fWidth;
@@ -21,15 +24,105 @@ Character::Character( float radius_, float acceleration_,
    yMaxPos =  0.5 * fHeight;
    xPixels = sWidth;
    yPixels = sHeight;
+   sdlTime = SDL_GetTicks();
 }
 
 void
 Character::update( EventCollector *collector ) {
-   // get time info from caller (possibly as argument)
-   // get inputs from mouse
-   // update position based on velocity and boundary conditions
-   // update velocity based on acceleration and boundary conditions
-   // update acceleration based on mouse inputs (and position)
+
+   // Update time and find time since last update
+   Uint32 oldTime = sdlTime;
+   sdlTime = SDL_GetTicks();
+   Uint32 dt = sdlTime - oldTime;
+
+   // update position based on velocity
+   xPos += xVel * float( dt );
+   yPos += yVel * float( dt );
+
+   // update velocity based on acceleration
+   xVel += xAcc * float( dt );
+   yVel += yAcc * float( dt );
+
+   // enforce boundaries
+   if ( xPos + radius > xMaxPos ) {
+      xPos = xMaxPos - radius;
+      xVel = 0;
+   }
+   if ( xPos - radius < xMinPos ) {
+      xPos = xMinPos + radius;
+      xVel = 0;
+   }
+   if ( yPos + radius > yMaxPos ) {
+      yPos = yMaxPos - radius;
+      yVel = 0;
+   }
+   if ( yPos - radius > yMinPos ) {
+      yPos = yMinPos + radius;
+      yVel = 0;
+   }
+
+   // Enumerate on bitmap of inputs to update acceleration
+   short bitmap = 0;
+   short up = short( collector->up() );
+   short down = short( collector->down() );
+   short left = short( collector->left() );
+   short right = short( collector->right() );
+   bitmap = up + ( down << 1 ) + ( left << 2 ) + ( right << 3 );
+
+   switch( bitmap ) {
+      case 0b0000:
+      case 0b1100:
+      case 0b0011:
+      case 0b1111:
+            // No net direction
+            xAcc = 0;
+            yAcc = 0;
+            break;
+      case 0b1000:
+      case 0b1011:
+            // Net direction up
+            xAcc = 0;
+            yAcc = acceleration * -1;
+            break;
+      case 0b0100:
+      case 0b0111:
+            // Net direction down
+            xAcc = 0;
+            yAcc = acceleration;
+            break;
+      case 0b0010:
+      case 0b1110:
+            // Net direction left
+            xAcc = acceleration * -1;
+            yAcc = 0;
+            break;
+      case 0b0001:
+      case 0b1101:
+            // Net direction right
+            xAcc = acceleration;
+            yAcc = 0;
+            break;
+      case 0b1010:
+            // Net direction up-left
+            xAcc = diagAccel * -1;
+            yAcc = diagAccel * -1;
+            break;
+      case 0b1001:
+            // Net direction up-right
+            xAcc = diagAccel;
+            yAcc = diagAccel * -1;
+            break;
+      case 0b0110:
+            // Net direction down-left
+            xAcc = diagAccel * -1;
+            yAcc = diagAccel;
+            break;
+      case 0b0101:
+            // Net direction down-right
+            xAcc = diagAccel;
+            yAcc = diagAccel;
+            break;
+   }
 }
 
 void
