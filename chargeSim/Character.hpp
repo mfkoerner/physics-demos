@@ -32,14 +32,10 @@ private:
    float yMinPos = 0;
    int yPixels = 0;
 
-   // SDL attributes
-   SDL_Renderer *renderer = NULL;
-
 
 public:
    // Constructor
-   Character( SDL_Renderer *renderer,
-              float radius, float acceleration,
+   Character( float radius, float acceleration,
               float xPosInitial, float yPosInitial,
               float fWidth, float fHeight,
               int sWidth, int sHeight );
@@ -49,7 +45,7 @@ public:
    void draw( SDL_Renderer *renderer );
 
    // Helpers
-   void drawCircle( int x, int y, int radius );
+   void drawCircle( int x, int y, int radius, SDL_Renderer *renderer );
 
 }; //class Character
 

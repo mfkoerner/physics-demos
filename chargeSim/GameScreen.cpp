@@ -20,7 +20,7 @@ Screen::Screen( int width, int height ) {
    // Initialize character
    float fWidth = 100;
    float fHeight = 100 * float( height ) / float( width );
-   character = new Character( renderer, 5.0, 1.0, 0.0, 0.0, fWidth, fHeight, width, height );
+   character = new Character( 5.0, 1.0, 0.0, 0.0, fWidth, fHeight, width, height );
 }
 
 Screen::~Screen() {

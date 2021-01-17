@@ -7,12 +7,10 @@
 
 namespace PhysicsGame {
 
-Character::Character( SDL_Renderer *renderer_,
-                      float radius_, float acceleration_,
+Character::Character( float radius_, float acceleration_,
                       float xPosInitial, float yPosInitial,
                       float fWidth, float fHeight,
                       int sWidth, int sHeight ) {
-   renderer = renderer_;
    radius = radius_;
    acceleration = acceleration_;
    xPos = xPosInitial;
@@ -42,11 +40,8 @@ Character::draw( SDL_Renderer *renderer ) {
 }
 
 void
-Character::drawCircle( int centerX, int centerY, int radius ) {
-   // SDL refresh screen
-   SDL_SetRenderDrawColor( renderer, 0, 0, 0, 0 );
-   SDL_RenderClear( renderer );
-   SDL_SetRenderDrawColor( renderer, 255, 255, 255, 255 );
+Character::drawCircle( int centerX, int centerY, int radius,
+                       SDL_Renderer *renderer ) {
 
    // Handle radius 1 and 2 which do not work well in algorithm manually
    if ( radius == 1 ) { // special case r=1
@@ -57,6 +52,7 @@ Character::drawCircle( int centerX, int centerY, int radius ) {
             SDL_RenderDrawPoint( renderer, centerX+xdiff, centerY+ydiff );
          }
       }
+
    } else { // General case
 
       int x = 0;
@@ -95,9 +91,6 @@ Character::drawCircle( int centerX, int centerY, int radius ) {
          }
       }
    }
-
-   // SDL update screen
-   SDL_RenderPresent( renderer );
 }
 
 } // namespace PhysicsGame
