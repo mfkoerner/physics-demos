@@ -16,4 +16,4 @@ chargeSim/SDL2.dll
 chargeSim/.*
 
 # chargeSim linux executable
-chargeSim/chargeSim
+chargeSim/ChargeSim
