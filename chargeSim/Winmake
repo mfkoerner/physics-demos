@@ -23,8 +23,8 @@ all: $(TARGET)
 gameScreen.o: gameScreen.cpp gameScreen.hpp
 	$(CC) $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
 
+# $^ MUST come before LINKER* because SDL checks for existance of main()
 $(TARGET): $(TARGET).cpp gameScreen.o
-	# $^ MUST come before LINKER* because SDL checks for existance of main()
 	$(CC) $^ $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -o $(@).exe
 
 clean:
