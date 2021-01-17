@@ -57,7 +57,7 @@ Character::update( EventCollector *collector ) {
       yPos = yMaxPos - radius;
       yVel = 0;
    }
-   if ( yPos - radius > yMinPos ) {
+   if ( yPos - radius < yMinPos ) {
       yPos = yMinPos + radius;
       yVel = 0;
    }
