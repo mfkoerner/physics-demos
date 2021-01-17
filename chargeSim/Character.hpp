@@ -35,6 +35,7 @@ private:
    float yMaxPos = 0;
    float yMinPos = 0;
    int yPixels = 0;
+   float multiplier = 0;
 
 
 public:

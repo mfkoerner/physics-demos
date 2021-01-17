@@ -24,6 +24,7 @@ Character::Character( float radius_, float acceleration_,
    yMaxPos =  0.5 * fHeight;
    xPixels = sWidth;
    yPixels = sHeight;
+   multiplier = float( xPixels ) / ( fWidth );
    sdlTime = SDL_GetTicks();
 }
 
@@ -127,9 +128,13 @@ Character::update( EventCollector *collector ) {
 
 void
 Character::draw( SDL_Renderer *renderer ) {
-   // possibly calculate radius in pixels (or keep this constant)
-   // calculate centerX and centerY in pixels from xPos and yPos (float)
-   // call drawCircle
+   // integer radius (in pixels)
+   int r = int( radius * multiplier );
+   // x and y in pixels from upper left of screen
+   int x = int( ( xPos - xMinPos ) * multiplier );
+   int y = int( ( yPos - yMinPos ) * multiplier );
+   // actually render the circle
+   drawCircle( x, y, r, renderer );
 }
 
 void
