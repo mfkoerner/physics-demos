@@ -68,7 +68,7 @@ Character::update( EventCollector *collector ) {
    short down = short( collector->down() );
    short left = short( collector->left() );
    short right = short( collector->right() );
-   bitmap = up + ( down << 1 ) + ( left << 2 ) + ( right << 3 );
+   bitmap = ( up << 3 ) + ( down << 2 ) + ( left << 1 ) + right;
 
    switch( bitmap ) {
       case 0b0000:
