@@ -35,7 +35,7 @@ Character::update( EventCollector *collector ) {
 }
 
 void
-Character::draw() {
+Character::draw( SDL_Renderer *renderer ) {
    // possibly calculate radius in pixels (or keep this constant)
    // calculate centerX and centerY in pixels from xPos and yPos (float)
    // call drawCircle

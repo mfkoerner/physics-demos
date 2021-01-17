@@ -34,17 +34,15 @@ Screen::~Screen() {
 }
 
 void
-Screen::draw( int xmin, int ymin ) {
+Screen::draw() {
    SDL_SetRenderDrawColor( renderer, 0, 0, 0, 0 );
    SDL_RenderClear( renderer );
    SDL_SetRenderDrawColor( renderer, 255, 255, 255, 255 );
 
-   // render a box
-   for ( int x = xmin; x < xmin+100; ++x ) {
-      for ( int y = ymin; y < ymin+100; ++y ) {
-         SDL_RenderDrawPoint( renderer, x, y );
-      }
-   }
+   // draw static images (none for now)
+
+   // draw character
+   character->draw( renderer );
 
    // update screen
    SDL_RenderPresent( renderer );

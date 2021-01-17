@@ -29,7 +29,7 @@ public:
    // Constructor and Destructor
    Screen( int width, int height );
    ~Screen();
-   void draw( int x, int y ); // FIXME no coords
+   void draw();
    void update( EventCollector *collector );
 }; // class Screen
 

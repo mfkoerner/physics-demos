@@ -46,7 +46,7 @@ public:
 
    // Main functionality
    void update( EventCollector *collector );
-   void draw();
+   void draw( SDL_Renderer *renderer );
 
    // Helpers
    void drawCircle( int x, int y, int radius );
