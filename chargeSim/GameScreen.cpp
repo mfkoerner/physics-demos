@@ -2,8 +2,9 @@
 // Email:   mfkoerner@gmail.com
 // Copyright (c) 2021 Mitchell Koerner
 
-#include "GameScreen.hpp"
 #include "Character.hpp"
+#include "EventCollector.hpp"
+#include "GameScreen.hpp"
 #include "SDL.h"
 
 namespace PhysicsGame {
@@ -56,22 +57,11 @@ Screen::draw( int xmin, int ymin ) {
 }
 
 void
-Screen::update() {
+Screen::update( EventCollector *collector ) {
    // get time
    // get inputs (maybe, this could be done in character)
    // update state of character
    // call draw
-}
-
-void
-Screen::drawDot() {
-   // FIXME remove (POC only)
-   character->drawCircle( 200, 100, 50 );
-}
-
-bool
-Screen::shouldQuit() {
-   return SDL_PollEvent( &event ) && event.type == SDL_QUIT;
 }
 
 } // namespace PhysicsGame

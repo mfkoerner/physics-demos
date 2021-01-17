@@ -6,6 +6,7 @@
 #define GAME_SCREEN_HPP
 
 #include "Character.hpp"
+#include "EventCollector.hpp"
 #include "SDL.h"
 
 namespace PhysicsGame {
@@ -29,9 +30,7 @@ public:
    Screen( int width, int height );
    ~Screen();
    void draw( int x, int y ); // FIXME no coords
-   void update();
-   void drawDot(); // FIXME experimental
-   bool shouldQuit();
+   void update( EventCollector *collector );
 }; // class Screen
 
 } // namespace PhysicsGame
