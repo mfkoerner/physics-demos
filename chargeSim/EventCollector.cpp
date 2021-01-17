@@ -21,7 +21,22 @@ EventCollector::clearEvents() {
 
 void
 EventCollector::addIfImportant( SDL_Event event ) {
-   // stub
+   if ( event.type == SDL_KEYDOWN ) {
+      switch( event.key.keysym.sym ) {
+         case SDLK_UP:
+            up_pressed = true;
+            break;
+         case SDLK_DOWN:
+            down_pressed = true;
+            break;
+         case SDLK_LEFT:
+            left_pressed = true;
+            break;
+         case SDLK_RIGHT:
+            right_pressed = true;
+            break;
+      }
+   }
 }
 
 } // namespace PhysicsGame
