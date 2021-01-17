@@ -21,7 +21,11 @@ GameScreen.o: GameScreen.cpp GameScreen.hpp
 	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
 	cp $^ win/
 
-$(TARGET): $(TARGET).cpp GameScreen.o
+Character.o: Character.cpp Character.hpp
+	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
+	cp $^ win/
+
+$(TARGET): $(TARGET).cpp GameScreen.o Character.o
 	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -o $@ $^
 	cp $< win/
 	cp Winmake win/Makefile
