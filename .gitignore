@@ -13,6 +13,7 @@ chargeSim/SDL2/
 # Other internal workings of chargeSim
 chargeSim/win
 chargeSim/SDL2.dll
+chargeSim/.*
 
 # chargeSim linux executable
 chargeSim/chargeSim
