@@ -15,16 +15,16 @@ LINKER_DIR = -LSDL2/x86_64-w64-mingw32/lib
 LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2
 
 # build target executable:
-TARGET = chargeSim
+TARGET = ChargeSim
 INCLUDE = -I SDL2/x86_64-w64-mingw32/include/SDL2
 
 all: $(TARGET)
 
-gameScreen.o: gameScreen.cpp gameScreen.hpp
+GameScreen.o: GameScreen.cpp GameScreen.hpp
 	$(CC) $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
 
 # $^ MUST come before LINKER* because SDL checks for existance of main()
-$(TARGET): $(TARGET).cpp gameScreen.o
+$(TARGET): $(TARGET).cpp GameScreen.o
 	$(CC) $^ $(CFLAGS) $(LINKER_DIR) $(LINKER_FLAGS) $(INCLUDE) -o $(@).exe
 
 clean:

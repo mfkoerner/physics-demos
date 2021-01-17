@@ -1,5 +1,6 @@
 // Author:  Mitchell Koerner
 // Email:   mfkoerner@gmail.com
+// Copyright (c) 2021 Mitchell Koerner
 
 // Library functions
 #define SDL_MAIN_HANDLED
@@ -7,7 +8,7 @@
 #include "stdio.h"
 
 // My functions
-#include "gameScreen.hpp"
+#include "GameScreen.hpp"
 
 //Screen dimension constants
 #define SCREEN_WIDTH 640

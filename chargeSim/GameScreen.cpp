@@ -1,6 +1,9 @@
 // Author:  Mitchell Koerner
 // Email:   mfkoerner@gmail.com
-#include "gameScreen.hpp"
+// Copyright (c) 2021 Mitchell Koerner
+
+#include "GameScreen.hpp"
+#include "SDL.h"
 
 namespace PhysicsGame {
 

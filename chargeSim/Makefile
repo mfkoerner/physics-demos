@@ -10,18 +10,18 @@ CFLAGS = -Wall -g
 LINKER_FLAGS = -lSDL2
 
 # build target executable:
-TARGET = chargeSim
+TARGET = ChargeSim
 INCLUDE = -I /usr/include/SDL2
 
 all: $(TARGET)
 
-chargeSim: chargeSim.cpp gameScreen.o
+ChargeSim: ChargeSim.cpp GameScreen.o
 
-gameScreen.o: gameScreen.cpp gameScreen.hpp
+GameScreen.o: GameScreen.cpp GameScreen.hpp
 	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -c -o $@ $<
 	cp $^ win/
 
-$(TARGET): $(TARGET).cpp gameScreen.o
+$(TARGET): $(TARGET).cpp GameScreen.o
 	$(CC) $(CFLAGS) $(LINKER_FLAGS) $(INCLUDE) -o $@ $^
 	cp $< win/
 	cp Winmake win/Makefile
