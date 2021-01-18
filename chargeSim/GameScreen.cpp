@@ -23,7 +23,7 @@ Screen::Screen( int width, int height ) {
 
    //                                           float          pixel
    // Character( radius, acceleration, x, y, width, height, width, height )
-   character = new Character( 5.0, 0.00001, 0.0, 0.0, fWidth, fHeight, width, height );
+   character = new Character( 5.0, 0.00007, 0.0, 0.0, fWidth, fHeight, width, height );
 }
 
 Screen::~Screen() {
